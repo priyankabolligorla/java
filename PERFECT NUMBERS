@@ -1,0 +1,36 @@
+public class PerfectNumbers {
+    public static void main(String[] args) {
+        int n = 3; // Change n to the desired number of perfect numbers
+        
+        System.out.printf("First %d perfect numbers are: ", n);
+        int count = 0;
+        int num = 1;
+        
+        while (count < n) {
+            if (isPerfectNumber(num)) {
+                System.out.print(num);
+                count++;
+                if (count < n) {
+                    System.out.print(" , ");
+                }
+            }
+            num++;
+        }
+    }
+    
+    // Function to check if a number is a perfect number
+    public static boolean isPerfectNumber(int num) {
+        int sum = 1; // Start with 1 since every number is divisible by 1
+        
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                sum += i;
+                if (i != num / i) {
+                    sum += num / i;
+                }
+            }
+        }
+        
+        return sum == num;
+    }
+}
